@@ -37,7 +37,31 @@ def delim_parse(blob, delim):
     return path
 
 
+def tsv_parse(blob):
+    return delim_parse(blob, '\t')
+
+
+def csv_parse(blob):
+    return delim_parse(blob, ',')
+
+
+def space_parse(blob):
+    return delim_parse(blob, ' ')
+
+
 if __name__ == "__main__":
     print(delim_parse("This\tis\ta\ntest\tof\nthe\nparser\n.\tAnother\tstring\there", '\t'))
     print(delim_parse(["This\tis\ta\ntest\tof\nthe\nparser\n.\tAnother\tstring\there"], '\t'))
     print(delim_parse(["This\tis\ta", "test\tof", "the", "parser", ".\tAnother\tstring\there"], '\t'))
+
+    print(tsv_parse("This\tis\ta\ntest\tof\nthe\nparser\n.\tAnother\tstring\there"))
+    print(tsv_parse(["This\tis\ta\ntest\tof\nthe\nparser\n.\tAnother\tstring\there"]))
+    print(tsv_parse(["This\tis\ta", "test\tof", "the", "parser", ".\tAnother\tstring\there"]))
+
+    print(csv_parse("This,is,a\ntest,of\nthe\nparser\n.,Another,string,here"))
+    print(csv_parse(["This,is,a\ntest,of\nthe\nparser\n.,Another,string,here"]))
+    print(csv_parse(["This,is,a", "test,of", "the", "parser", ".,Another,string,here"]))
+
+    print(space_parse("This is a\ntest of\nthe\nparser\n. Another string here"))
+    print(space_parse(["This is a\ntest of\nthe\nparser\n. Another string here"]))
+    print(space_parse(["This is a", "test of", "the", "parser", ". Another string here"]))
