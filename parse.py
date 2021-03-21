@@ -3,6 +3,10 @@ def trim(string, delim, num):
     while start >= 0 and num > 1:
         start = string.find(delim, start+len(delim))
         num -= 1
+
+    # Fixes removal of last character
+    if start < 0:
+        start = len(string)
     return string[0:start]
 
 
