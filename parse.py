@@ -16,7 +16,6 @@ def delim_parse(blob, delim):
     blob_str = '\n'.join(blob)
     blob_str = blob_str.replace('\n', delim)
     path = []
-    # TODO: Fix mangling of the final element(s)
     while blob_str:
 
         # Break off the first distance-angle pair
